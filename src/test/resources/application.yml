@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: Customer Service
+  datasource:
+    hikari:
+      connection-timeout: 10000
+    embedded-database-connection: hsqldb
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    generate-ddl: true
+  h2:
+    console:
+      enabled: true
+      path: h2-console
+logging:
+  level:
+    root: debug

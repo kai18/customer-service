@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: Customer Service
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://mysql_container:3306/default_db
+    password: secret
+    hikari:
+      connection-timeout: 10000
+      schema: default_db
+    username: customer_service
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database: mysql
+    show-sql: true
+    generate-ddl: true
+  kafka:
+    bootstrap-servers: kafka1:9092
+    producer:
+      acks: all
+      client-id: 11
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      retries: 3
+      topic: consumers
+      properties:
+        delivery.timeout.ms: 1500
+        retry.backoff.ms: 100
+        retry.backoff.max.ms: 300
+        enable.idempotence: true
+        request.timeout.ms: 1500
